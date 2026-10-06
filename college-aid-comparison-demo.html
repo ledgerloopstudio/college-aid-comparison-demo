@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>College Aid Offer Comparison | LedgerLoopStudio (Free Demo)</title>
+<meta name="description" content="Compare college financial-aid offers side by side. True net cost, 4-year projections, loan estimates and a decision scorecard. Offline, private, no account.">
+<style>
+/* ================================================================
+   LEDGERLOOPSTUDIO — "IVY DECISION" VISUAL IDENTITY
+   A collegiate decision desk: academic navy, burgundy, brass gold.
+   Admissions-letter voice, serif-forward, ledger-ruled tables.
+   System fonts only. Offline single file.
+   Display: editorial serif · UI: system sans · Numerals: tabular.
+   ================================================================ */
+:root, [data-theme="light"]{
+  color-scheme:light;
+  --font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --font-display:Didot,"Bodoni MT",Georgia,"Palatino Linotype","Times New Roman",serif;
+  --bg:#F5F0E1; --bg2:#ECE3CC; --surface:#FDFBF2; --surface2:#F3ECDA;
+  --text:#1F2433; --muted:#5D6579; --faint:#9AA1B5;
+  --line:#E1D6B9; --line2:#CDBF9C;
+  --primary:#1D2C4E; --primary-d:#121D38; --primary-t:#E8EBF4;
+  --crimson:#7E2F3C; --crimson-d:#5E2230; --crimson-t:#F6E9E3;
+  --sage:#7C8BA8; --gold:#A98A3E; --gold-d:#7E6527; --gold-t:#F5ECD2;
+  --danger:#9C3A2E; --danger-t:#F8E7E0; --warn:#8F6418; --warn-t:#F7EDD8;
+  --ok:#2F6B46; --ok-t:#E4EFE7;
+  --ink:#1F2433;
+  --shadow:0 1px 2px rgba(29,44,78,.06),0 12px 30px -14px rgba(29,44,78,.18);
+  --shadow-lg:0 2px 6px rgba(29,44,78,.08),0 26px 60px -20px rgba(29,44,78,.32);
+  --shadow-btn:0 1px 2px rgba(18,29,56,.35),inset 0 1px 0 rgba(255,255,255,.18);
+  --radius:16px; --radius-s:9px; --radius-lg:20px;
+  --font:var(--font-sans);
+}
+[data-theme="soft"]{
+  color-scheme:light;
+  --font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --font-display:Didot,"Bodoni MT",Georgia,"Palatino Linotype","Times New Roman",serif;
+  --bg:#FAF2EA; --bg2:#F3E5D4; --surface:#FFFDF7; --surface2:#F8ECDC;
+  --text:#3B2B30; --muted:#8A7268; --faint:#BCA391;
+  --line:#EBD7C4; --line2:#D9BEA4;
+  --primary:#7E2F3C; --primary-d:#5E2230; --primary-t:#F7E9E3;
+  --crimson:#7E2F3C; --crimson-d:#5E2230; --crimson-t:#F7E9E3;
+  --sage:#A8937C; --gold:#AC8438; --gold-d:#84652A; --gold-t:#F6EDD4;
+  --danger:#9C3A2E; --danger-t:#F8E7E0; --warn:#8F6418; --warn-t:#F7EDD8;
+  --ok:#3E6E4A; --ok-t:#E6F0E4;
+  --ink:#3B2B30;
+  --shadow:0 1px 2px rgba(94,34,48,.07),0 12px 30px -14px rgba(94,34,48,.18);
+  --shadow-lg:0 2px 6px rgba(94,34,48,.08),0 26px 60px -20px rgba(126,47,60,.30);
+  --shadow-btn:0 1px 2px rgba(94,34,48,.35),inset 0 1px 0 rgba(255,255,255,.18);
+  --radius:16px; --radius-s:9px; --radius-lg:20px;
+  --font:var(--font-sans);
+}
+[data-theme="professional"]{
+  color-scheme:light;
+  --font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --font-display:Didot,"Bodoni MT",Georgia,"Palatino Linotype","Times New Roman",serif;
+  --bg:#EDF0F4; --bg2:#DDE3EB; --surface:#FFFFFF; --surface2:#E8EDF4;
+  --text:#1C2740; --muted:#5D6B85; --faint:#97A3B9;
+  --line:#D5DCE8; --line2:#BAC4D6;
+  --primary:#24355C; --primary-d:#16233F; --primary-t:#E5EAF5;
+  --crimson:#8A3040; --crimson-d:#662430; --crimson-t:#F5E7E8;
+  --sage:#7C8BA8; --gold:#A08338; --gold-d:#7A6227; --gold-t:#F3EBD2;
+  --danger:#9C3A2E; --danger-t:#F8E7E0; --warn:#8F6418; --warn-t:#F7EDD8;
+  --ok:#2F6B46; --ok-t:#E4EFE7;
+  --ink:#1C2740;
+  --shadow:0 1px 2px rgba(28,39,64,.07),0 12px 30px -14px rgba(28,39,64,.18);
+  --shadow-lg:0 2px 6px rgba(28,39,64,.08),0 26px 60px -20px rgba(36,53,92,.30);
+  --shadow-btn:0 1px 2px rgba(22,35,63,.35),inset 0 1px 0 rgba(255,255,255,.18);
+  --radius:16px; --radius-s:9px; --radius-lg:20px;
+  --font:var(--font-sans);
+}
+[data-theme="minimal"]{
+  color-scheme:light;
+  --font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --font-display:Didot,"Bodoni MT",Georgia,"Palatino Linotype","Times New Roman",serif;
+  --bg:#FBFBF8; --bg2:#F0F0EA; --surface:#FFFFFF; --surface2:#F5F5F0;
+  --text:#1A2030; --muted:#6B7280; --faint:#A6ACB8;
+  --line:#E5E5DC; --line2:#D1D1C6;
+  --primary:#232C44; --primary-d:#141A2C; --primary-t:#ECEEF4;
+  --crimson:#8A3040; --crimson-d:#662430; --crimson-t:#F4E8E9;
+  --sage:#9AA0AE; --gold:#93803F; --gold-d:#6E612E; --gold-t:#F2EEDB;
+  --danger:#9C3A2E; --danger-t:#F8E7E0; --warn:#8F6418; --warn-t:#F7EDD8;
+  --ok:#2F6B46; --ok-t:#E4EFE7;
+  --ink:#1A2030;
+  --shadow:0 1px 2px rgba(20,26,44,.06),0 12px 28px -14px rgba(20,26,44,.14);
+  --shadow-lg:0 2px 6px rgba(20,26,44,.07),0 24px 56px -20px rgba(20,26,44,.24);
+  --shadow-btn:0 1px 2px rgba(20,26,44,.35),inset 0 1px 0 rgba(255,255,255,.16);
+  --radius:16px; --radius-s:9px; --radius-lg:20px;
+  --font:var(--font-sans);
+}
+[data-theme="dark"]{
+  color-scheme:dark;
+  --font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --font-display:Didot,"Bodoni MT",Georgia,"Palatino Linotype","Times New Roman",serif;
+  --bg:#0A1122; --bg2:#0E1729; --surface:#131D34; --surface2:#18233C;
+  --text:#EDE9DB; --muted:#9AA3B9; --faint:#5E6884;
+  --line:#233051; --line2:#303F66;
+  --primary:#93A7D8; --primary-d:#B4C4EA; --primary-t:#1C2747;
+  --crimson:#C96A74; --crimson-d:#A8545E; --crimson-t:#38222B;
+  --sage:#7C8BA8; --gold:#C9A24E; --gold-d:#A8823C; --gold-t:#2E2812;
+  --danger:#DE8A70; --danger-t:#3B241B; --warn:#D9A441; --warn-t:#3A2F16;
+  --ok:#7CC79A; --ok-t:#1E3327;
+  --ink:#EDE9DB;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 14px 34px -14px rgba(0,0,0,.6);
+  --shadow-lg:0 2px 8px rgba(0,0,0,.45),0 28px 64px -20px rgba(0,0,0,.7);
+  --shadow-btn:0 1px 2px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.12);
+  --radius:16px; --radius-s:9px; --radius-lg:20px;
+  --font:var(--font-sans);
+}
+/* font choices (UI text only — display type stays editorial serif) */
+[data-font="system"]{ --font:var(--font-sans); }
+[data-font="humanist"]{ --font:"Segoe UI","Helvetica Neue",Verdana,"Lucida Grande",sans-serif; }
+[data-font="classic"]{ --font:Georgia,"Times New Roman",serif; }
+[data-font="rounded"]{ --font:ui-rounded,"SF Pro Rounded","Segoe UI",system-ui,sans-serif; }
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;font-size:15px;min-height:100vh;
+  background-image:
+    radial-gradient(1100px 480px at 50% -8%,color-mix(in srgb,var(--gold-t) 55%,transparent),transparent 70%),
+    radial-gradient(900px 420px at 85% 110%,color-mix(in srgb,var(--primary-t) 60%,transparent),transparent 70%)}
+::selection{background:var(--gold-t);color:var(--text)}
+a{color:var(--primary)}
+button{font-family:inherit;cursor:pointer}
+input,select,textarea{font-family:inherit;font-size:15px;color:var(--text)}
+
+/* eyebrow labels — small caps section headers, crimson ink */
+.eyebrow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2.6px;color:var(--crimson)}
+.display{font-family:var(--font-display);font-weight:500;letter-spacing:-.01em}
+
+/* ============ APP SHELL — letterhead ============ */
+.app{max-width:1200px;margin:0 auto;padding:0 24px 96px}
+.topbar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line2);box-shadow:0 2px 0 -1px var(--gold),0 8px 24px -18px rgba(29,44,78,.35)}
+.topbar-in{max-width:1200px;margin:0 auto;padding:13px 24px;display:flex;align-items:center;gap:14px}
+.brand{display:flex;align-items:center;gap:12px;margin-right:auto}
+/* crest mark — navy shield, brass monogram, double gold rule */
+.brand-mark{width:42px;height:42px;border-radius:11px;background:linear-gradient(150deg,var(--primary) 0%,var(--primary-d) 100%);
+  color:var(--gold);display:grid;place-items:center;font-family:var(--font-display);font-size:22px;font-weight:600;
+  border:1px solid var(--gold-d);outline:2px solid color-mix(in srgb,var(--gold) 35%,transparent);outline-offset:2px;
+  box-shadow:var(--shadow)}
+.brand small{display:block;font-size:9.5px;letter-spacing:3.2px;color:var(--muted);font-weight:700}
+.brand strong{display:block;font-family:var(--font-display);font-size:18px;font-weight:600;letter-spacing:.3px;color:var(--text)}
+.backup-dot{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;color:var(--muted);border:1px solid var(--line2);background:var(--surface);border-radius:99px;padding:7px 14px;white-space:nowrap;box-shadow:var(--shadow);transition:border-color .2s}
+.backup-dot i{width:8px;height:8px;border-radius:50%;background:var(--ok);display:inline-block;box-shadow:0 0 0 3px var(--ok-t)}
+.backup-dot.stale i{background:var(--warn);box-shadow:0 0 0 3px var(--warn-t)}
+/* theme toggle — prominent one-click dark/light switch in header */
+.theme-toggle{width:38px;height:38px;flex:none;border-radius:50%;border:1px solid var(--gold-d);background:var(--surface);color:var(--gold-d);display:grid;place-items:center;font-size:17px;line-height:1;box-shadow:var(--shadow);transition:transform .18s ease,box-shadow .2s ease,border-color .2s ease}
+.theme-toggle:hover{transform:translateY(-1px);border-color:var(--gold);box-shadow:var(--shadow-lg)}
+.theme-toggle:active{transform:translateY(0) scale(.96)}
+.theme-toggle:focus-visible{outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--gold) 40%,transparent)}
+.nav{display:flex;gap:6px;overflow-x:auto;padding:12px 0 4px;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav button{border:1px solid transparent;background:transparent;color:var(--muted);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1.5px;padding:10px 16px;border-radius:99px;white-space:nowrap;transition:all .2s ease}
+.nav button:hover{background:var(--surface);color:var(--text);border-color:var(--line2);box-shadow:var(--shadow)}
+.nav button.active{background:linear-gradient(180deg,var(--primary),var(--primary-d));color:#F7F3E4;box-shadow:var(--shadow-btn),inset 0 -2px 0 var(--gold)}
+[data-theme="dark"] .nav button.active{color:#0A1122}
+.view{display:none;animation:fadeUp .25s ease}
+.view.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* ============ CARDS / GRID ============ */
+.grid{display:grid;gap:18px}
+.grid>*{min-width:0}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))} .g3{grid-template-columns:repeat(3,minmax(0,1fr))} .g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-top:3px solid color-mix(in srgb,var(--gold) 65%,transparent);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px;position:relative;transition:box-shadow .25s ease,transform .25s ease;min-width:0}
+.card h3{font-family:var(--font-display);font-size:13px;text-transform:uppercase;letter-spacing:2.4px;color:var(--muted);margin-bottom:14px;padding-bottom:10px;font-weight:600;border-bottom:1px solid var(--line)}
+/* stat cards — gold hairline crown + serif numerals */
+#statCards .card::before,#logStats .card::before,#whatifResult .card::before{content:"";position:absolute;top:0;left:24px;right:24px;height:2px;border-radius:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.9}
+.stat-num{font-family:var(--font-display);font-size:clamp(28px,2.6vw + 12px,42px);font-weight:600;letter-spacing:-.01em;line-height:1.1;font-variant-numeric:tabular-nums;overflow-wrap:anywhere;color:var(--primary)}
+[data-theme="dark"] .stat-num{color:var(--text)}
+.stat-sub{font-size:13px;color:var(--muted);margin-top:6px}
+.stat-accent{color:var(--crimson)}
+/* admissions-letter hero — ivory card, navy serif headline, double gold rule */
+.hero-band{background:linear-gradient(180deg,var(--surface) 0%,var(--surface2) 130%);color:var(--text);border-radius:var(--radius-lg);padding:36px 34px;box-shadow:var(--shadow-lg);position:relative;overflow:hidden;border:1px solid var(--line2)}
+.hero-band::before{content:"";position:absolute;top:0;left:0;right:0;height:7px;background:linear-gradient(180deg,var(--gold) 0 2px,transparent 2px,transparent 4px,var(--gold) 4px)}
+.hero-band::after{content:"";position:absolute;right:-64px;top:-64px;width:230px;height:230px;border-radius:50%;border:1px solid color-mix(in srgb,var(--gold) 45%,transparent)}
+.hero-band .eyebrow{color:var(--crimson);margin-bottom:10px;display:block}
+.hero-band h2{font-family:var(--font-display);font-size:clamp(28px,3.4vw + 8px,40px);font-weight:600;letter-spacing:-.015em;margin-bottom:10px;position:relative;z-index:1;color:var(--primary)}
+[data-theme="dark"] .hero-band h2{color:var(--text)}
+.hero-band p{opacity:.85;font-size:15px;max-width:660px;position:relative;z-index:1;font-style:italic;font-family:var(--font-display);font-size:16.5px}
+.progress{height:10px;background:var(--surface2);border:1px solid var(--line2);border-radius:99px;overflow:hidden;margin-top:20px;position:relative;z-index:1}
+.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--crimson),var(--gold));border-radius:99px;transition:width .9s cubic-bezier(.2,.8,.2,1);box-shadow:0 0 12px color-mix(in srgb,var(--gold) 55%,transparent)}
+.card .progress{background:var(--surface2);border-color:var(--line)}
+.card .progress i{background:linear-gradient(90deg,var(--crimson),var(--gold))}
+
+/* ============ TABLES — ruled ledger, navy masthead ============ */
+.table-wrap{overflow-x:auto;border:1px solid var(--line2);border-radius:var(--radius-s);background:var(--surface);box-shadow:var(--shadow)}
+table{width:100%;border-collapse:collapse;font-size:14px}
+thead th{position:sticky;top:0;z-index:1;background:linear-gradient(180deg,var(--primary),var(--primary-d));color:#F6F1DF;
+  font-size:11px;text-transform:uppercase;letter-spacing:1.8px;padding:13px 14px;border-bottom:2px solid var(--gold);white-space:nowrap;font-weight:700}
+[data-theme="dark"] thead th{color:#0A1122}
+th{text-align:left;padding:12px 14px;vertical-align:middle}
+td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:middle;overflow-wrap:anywhere}
+tbody tr{transition:background .18s ease}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:color-mix(in srgb,var(--gold-t) 55%,transparent)}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+td b{font-weight:650}
+/* pills — the gold "Best" badge is a wax seal */
+.pill{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;padding:4px 12px;border-radius:99px;background:var(--primary-t);color:var(--primary);border:1px solid color-mix(in srgb,var(--primary) 22%,transparent)}
+.pill.gold{background:radial-gradient(circle at 35% 28%,#EFD894 0%,var(--gold) 55%,var(--gold-d) 100%);color:#3B2A10;
+  border:1px solid var(--gold-d);box-shadow:inset 0 0 0 2px rgba(255,255,255,.28),0 1px 4px rgba(126,101,39,.4);font-family:var(--font-display);letter-spacing:1.4px}
+[data-theme="dark"] .pill.gold{color:#241A08}
+.pill.ok{background:var(--ok-t);color:var(--ok);border-color:color-mix(in srgb,var(--ok) 25%,transparent)}
+.pill.warn{background:var(--warn-t);color:var(--warn);border-color:color-mix(in srgb,var(--warn) 25%,transparent)}
+.pill.bad{background:var(--danger-t);color:var(--danger);border-color:color-mix(in srgb,var(--danger) 25%,transparent)}
+
+/* ============ FORMS ============ */
+.field{margin-bottom:16px}
+.field label{display:block;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:1.6px;margin-bottom:8px;color:var(--muted)}
+.input,select.input,textarea.input{width:100%;border:1px solid var(--line2);border-radius:var(--radius-s);padding:12px 14px;background:color-mix(in srgb,var(--surface) 72%,var(--bg));transition:border-color .18s ease,box-shadow .18s ease;font-variant-numeric:tabular-nums}
+.input::placeholder{color:var(--faint)}
+.input:hover{border-color:var(--gold-d)}
+.input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px color-mix(in srgb,var(--gold) 28%,transparent)}
+select.input{appearance:none;-webkit-appearance:none;padding-right:38px;cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%23A98A3E' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center}
+select.input:hover{border-color:var(--gold-d)}
+input[type="date"].input{cursor:pointer}
+.row2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
+.row4{display:grid;grid-template-columns:2fr minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:14px}
+/* buttons — navy regimental, gold hairline */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid color-mix(in srgb,var(--gold) 45%,transparent);border-radius:var(--radius-s);padding:12px 22px;font-weight:700;font-size:14px;letter-spacing:.4px;background:linear-gradient(180deg,var(--primary),var(--primary-d));color:#F7F3E4;box-shadow:var(--shadow-btn);transition:transform .15s ease,box-shadow .2s ease,filter .2s ease}
+.btn:hover{filter:brightness(1.07);box-shadow:var(--shadow-lg);transform:translateY(-1px)}
+.btn:active{transform:translateY(0) scale(.985);box-shadow:var(--shadow-btn)}
+[data-theme="dark"] .btn{color:#0A1122}
+.btn.ghost{background:var(--surface);color:var(--text);border-color:var(--line2);box-shadow:var(--shadow)}
+.btn.ghost:hover{background:var(--surface2);border-color:var(--gold-d);filter:none}
+.btn.soft{background:var(--primary-t);color:var(--primary);box-shadow:none;border-color:color-mix(in srgb,var(--primary) 22%,transparent)}
+.btn.soft:hover{background:color-mix(in srgb,var(--primary-t) 65%,var(--primary));filter:none;transform:translateY(-1px)}
+.btn.danger{background:var(--crimson-t);color:var(--crimson);box-shadow:none;border-color:color-mix(in srgb,var(--crimson) 30%,transparent)}
+.btn.danger:hover{background:color-mix(in srgb,var(--crimson-t) 65%,var(--crimson));filter:none}
+.btn.small{padding:8px 14px;border-radius:99px;letter-spacing:.6px;text-transform:uppercase;font-size:11.5px;font-weight:700}
+.btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.icon-btn{border:1px solid var(--line2);background:var(--surface);border-radius:9px;width:34px;height:34px;display:inline-grid;place-items:center;color:var(--muted);font-size:15px;transition:all .18s ease;box-shadow:var(--shadow)}
+.icon-btn:hover{color:var(--crimson);border-color:var(--crimson);transform:translateY(-1px)}
+.hint{font-size:13px;color:var(--muted)}
+.notice{border-radius:var(--radius-s);padding:16px 18px 16px 22px;font-size:14px;margin:16px 0;border:1px solid var(--line2);background:var(--surface2);position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.notice::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--primary)}
+.notice.info{background:var(--primary-t);border-color:color-mix(in srgb,var(--primary) 22%,transparent)}
+.notice.warn{background:var(--warn-t);border-color:color-mix(in srgb,var(--warn) 25%,transparent)}
+.notice.warn::before{background:var(--warn)}
+.notice.bad{background:var(--danger-t);border-color:color-mix(in srgb,var(--danger) 25%,transparent)}
+.notice.bad::before{background:var(--danger)}
+/* best-value callout — parchment with brass rule */
+.notice.ok{background:linear-gradient(180deg,var(--surface),var(--gold-t));border-color:color-mix(in srgb,var(--gold) 45%,transparent)}
+.notice.ok::before{background:linear-gradient(180deg,var(--gold),var(--gold-d))}
+.notice strong{display:block;margin-bottom:3px;font-family:var(--font-display);font-size:17px;font-weight:600;letter-spacing:.1px;color:var(--primary)}
+[data-theme="dark"] .notice strong{color:var(--text)}
+.alert-mark{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--crimson);color:#fff;font-size:12px;font-weight:800;font-family:var(--font-sans);margin-right:6px;vertical-align:-3px}
+.notice.warn .alert-mark{background:var(--warn)}
+
+/* ============ MILESTONES ============ */
+.timeline{position:relative;padding-left:30px}
+.timeline::before{content:"";position:absolute;left:10px;top:10px;bottom:10px;width:1px;background:linear-gradient(var(--gold),var(--line2))}
+.ms{position:relative;padding:12px 0}
+.ms::before{content:"";position:absolute;left:-26px;top:18px;width:11px;height:11px;border-radius:50%;background:var(--surface);border:2px solid var(--sage);transition:all .2s ease}
+.ms.done::before{background:var(--ok);border-color:var(--ok)}
+.ms.next::before{background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 6px var(--gold-t)}
+.ms b{display:block;font-size:15.5px;font-weight:650;overflow-wrap:anywhere}
+.ms span{font-size:13px;color:var(--muted);overflow-wrap:anywhere}
+
+/* ============ RANKING BARS — burgundy to brass ============ */
+.debtbar{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 14px;padding:15px 4px;border-bottom:1px solid var(--line);align-items:center}
+.debtbar:last-child{border-bottom:none}
+.debtbar .nm{font-family:var(--font-display);font-weight:600;font-size:16px;min-width:0;overflow-wrap:anywhere;color:var(--text)}
+.debtbar .meta{font-size:12.5px;color:var(--muted);margin-top:2px}
+.debtbar .amt{font-family:var(--font-display);font-size:23px;font-weight:600;font-variant-numeric:tabular-nums;text-align:right;color:var(--primary)}
+[data-theme="dark"] .debtbar .amt{color:var(--text)}
+.debtbar .bar{grid-column:1/-1;height:9px;background:var(--surface2);border:1px solid var(--line2);border-radius:99px;overflow:hidden}
+.debtbar .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--crimson),var(--gold));border-radius:99px;transition:width .8s cubic-bezier(.2,.8,.2,1)}
+/* scorecard verdicts — each row a ruled verdict slip, score in a brass medallion */
+#scoreResults .debtbar{background:var(--surface);border:1px solid var(--line2);border-radius:var(--radius-s);padding:14px 18px;margin-bottom:10px;box-shadow:var(--shadow)}
+#scoreResults .debtbar:last-child{margin-bottom:0}
+#scoreResults .debtbar .bar{grid-column:1/-1}
+#scoreResults .amt{display:grid;place-items:center;min-width:74px;min-height:74px;border-radius:50%;padding:8px;
+  border:2px solid var(--gold);outline:1px solid color-mix(in srgb,var(--gold) 40%,transparent);outline-offset:3px;
+  background:radial-gradient(circle at 38% 30%,var(--surface) 0%,var(--surface2) 100%);color:var(--crimson);font-size:20px}
+[data-theme="dark"] #scoreResults .amt{color:var(--gold)}
+
+/* ============ CHART ============ */
+.chart{width:100%;height:auto;display:block;color:var(--muted)}
+.chart-legend{display:flex;gap:18px;flex-wrap:wrap;font-size:12.5px;font-weight:600;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);margin-top:10px}
+.chart-legend i{width:22px;height:3px;border-radius:2px;display:inline-block;margin-right:8px;vertical-align:3px}
+
+/* ============ EMPTY STATES ============ */
+.empty{text-align:center;padding:52px 20px;color:var(--muted)}
+.empty .big{width:68px;height:68px;margin:0 auto 16px;border:1px solid var(--gold-d);border-radius:50%;display:grid;place-items:center;font-family:var(--font-display);font-size:24px;color:var(--gold-d);background:var(--surface2);box-shadow:var(--shadow),inset 0 0 0 3px color-mix(in srgb,var(--gold) 18%,transparent)}
+.empty b{color:var(--text);display:block;font-family:var(--font-display);font-size:19px;font-weight:600;margin-bottom:6px}
+
+/* ============ TOAST ============ */
+#toast{background:var(--ink);color:var(--bg);border:1px solid color-mix(in srgb,var(--gold) 45%,transparent);max-width:calc(100vw - 32px);text-align:center}
+
+/* ============ FOOTER ============ */
+.app footer{font-size:11px;letter-spacing:2.4px;text-transform:uppercase;border-top:1px solid var(--line);padding-top:22px}
+
+/* ============ PRINT ============ */
+@media print{
+  .topbar,.nav,.btnrow,.no-print{display:none!important}
+  body{background:#fff;background-image:none}
+  .app{max-width:100%;padding:0}
+  .card{box-shadow:none;break-inside:avoid;border-top:2px solid #1D2C4E}
+  .hero-band{box-shadow:none;border:1px solid #1D2C4E}
+  .hero-band h2{color:#1D2C4E}
+  thead th{background:#fff!important;color:#1D2C4E;border-bottom:2px solid #1D2C4E}
+  .view{display:block!important}
+  .view:not(#view-compare){display:none!important}
+}
+@media(max-width:1024px){
+  .g4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .row4{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:760px){
+  .g2,.g3,.g4{grid-template-columns:minmax(0,1fr)}
+  .row2{grid-template-columns:minmax(0,1fr)}
+  .row4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stat-num{font-size:32px}
+  .hero-band{padding:28px 22px}
+  .hero-band h2{font-size:26px}
+  .topbar-in{padding:10px 16px;gap:10px}
+  .app{padding:0 16px 72px}
+  .card{padding:20px}
+  .brand strong{font-size:15px}
+  .backup-dot span{display:none}
+  .backup-dot{padding:7px 10px}
+}
+@media(max-width:560px){
+  .row4{grid-template-columns:minmax(0,1fr)}
+  .brand small{letter-spacing:2px}
+}
+
+</style></head>
+<body>
+
+<!-- ===== LEDGERLOOPSTUDIO DEMO BAR ===== -->
+<div id="lls-demo-bar" style="position:fixed;top:0;left:0;right:0;z-index:999999;background:#1D2C4E;color:#FFFFFF;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:13px;font-weight:600;text-align:center;padding:9px 12px;box-shadow:0 2px 12px rgba(0,0,0,.18);line-height:1.4;">
+  <span style="margin-right:6px;">&#127876;</span> FREE DEMO &mdash; LedgerLoopStudio
+  <span style="opacity:.65;font-weight:400;margin:0 8px;">|</span>
+  <a href="https://www.etsy.com/shop/LedgerLoopStudio" target="_blank" rel="noopener" style="color:#FFFFFF;text-decoration:underline;text-underline-offset:2px;font-weight:700;">Get the full version on Etsy</a>
+  <span style="opacity:.65;font-weight:400;margin-left:8px;">(10 entries max in demo)</span><span id="demo-entry-counter" style="opacity:.85;font-weight:600;margin-left:12px;background:rgba(255,255,255,.2);padding:2px 10px;border-radius:10px;">0/10 entries used</span>
+</div>
+<script>
+(function(){
+  // Push body content below the demo bar so nothing is hidden
+  function padBody(){
+    var bar = document.getElementById('lls-demo-bar');
+    if (bar) document.body.style.paddingTop = bar.offsetHeight + 'px';
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', padBody);
+  else padBody();
+  window.addEventListener('resize', padBody);
+  setTimeout(padBody, 500);
+})();
+</script>
+<!-- ===== /DEMO BAR ===== -->
+
+<div class="topbar"><div class="topbar-in">
+  <div class="brand">
+    <div class="brand-mark">L</div>
+    <div><small>LEDGERLOOPSTUDIO</small><strong>Aid Offer Comparison</strong></div>
+  </div>
+  <div class="backup-dot" id="backupDot" title="Your data is stored on this device. Download a backup file to protect it."><i></i><span id="backupDotTxt">Saved on this device</span></div>
+  <button class="theme-toggle" id="themeToggle" title="Switch to dark mode" aria-label="Switch to dark mode" aria-pressed="false"><span id="themeToggleIcon" aria-hidden="true">☾</span></button>
+</div></div>
+
+<div class="app">
+  <nav class="nav no-print" id="mainNav" aria-label="Sections">
+    <button data-view="dashboard" class="active">Dashboard</button>
+    <button data-view="colleges">Colleges</button>
+    <button data-view="compare">Comparison</button>
+    <button data-view="fouryear">4-Year Cost</button>
+    <button data-view="scorecard">Scorecard</button>
+    <button data-view="settings">Settings &amp; Backup</button>
+  </nav>
+
+  <!-- ============ DASHBOARD ============ -->
+  <section class="view active" id="view-dashboard">
+    <div class="hero-band" style="margin:18px 0 22px">
+      <span class="eyebrow" id="heroKicker">True-cost comparison</span>
+      <h2 id="heroTitle">Find your cheapest college</h2>
+      <p id="heroSub">Add each college's aid offer under “Colleges” — true net costs, 4-year projections and the best-value pick appear here.</p>
+      <div class="progress"><i id="heroProgress" style="width:0%"></i></div>
+    </div>
+    <div class="grid g4" id="statCards" style="margin-bottom:18px"></div>
+    <div class="grid g2">
+      <div class="card">
+        <h3>Net-cost ranking · per year</h3>
+        <div id="rankBars"></div>
+      </div>
+      <div class="card">
+        <h3>4-year net cost by college</h3>
+        <div id="chart4yr"></div>
+        <div class="chart-legend"><span><i style="background:var(--primary)"></i>4-yr net cost</span><span><i style="background:var(--gold)"></i>of which loans</span></div>
+      </div>
+    </div>
+    <div id="bestNote" style="margin-top:18px"></div>
+  </section>
+
+  <!-- ============ COLLEGES ============ -->
+  <section class="view" id="view-colleges">
+    <div class="card" style="margin:18px 0">
+      <h3 id="collegeFormTitle">Add a college offer</h3>
+      <div class="field"><label for="cName">College name</label><input class="input" id="cName" placeholder="e.g. Brookfield State University" maxlength="80"></div>
+      <div class="row4">
+        <div class="field"><label for="cTuition">Tuition /yr</label><input class="input" id="cTuition" inputmode="decimal" placeholder="0"></div>
+        <div class="field"><label for="cHousing">Housing /yr</label><input class="input" id="cHousing" inputmode="decimal" placeholder="0"></div>
+        <div class="field"><label for="cBooks">Books /yr</label><input class="input" id="cBooks" inputmode="decimal" placeholder="0"></div>
+        <div class="field"><label for="cOther">Other costs /yr</label><input class="input" id="cOther" inputmode="decimal" placeholder="0"></div>
+      </div>
+      <div class="row4">
+        <div class="field"><label for="cGrants">Grants + scholarships /yr</label><input class="input" id="cGrants" inputmode="decimal" placeholder="0"></div>
+        <div class="field"><label for="cWork">Work-study /yr</label><input class="input" id="cWork" inputmode="decimal" placeholder="0"></div>
+        <div class="field"><label for="cFed">Federal loans /yr</label><input class="input" id="cFed" inputmode="decimal" placeholder="0"></div>
+        <div class="field"><label for="cOth">Other loans /yr</label><input class="input" id="cOth" inputmode="decimal" placeholder="0"></div>
+      </div>
+      <div class="btnrow">
+        <button class="btn" id="addCollegeBtn">Add college</button>
+        <button class="btn ghost" id="loadSampleBtn">Load sample data</button>
+        <button class="btn danger" id="clearCollegesBtn">Clear all</button>
+      </div>
+      <p class="hint" style="margin-top:10px">Up to 8 colleges. Enter yearly figures from each aid offer letter — grants and scholarships are free money; loans must be repaid.</p>
+    </div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>College</th><th class="num">Cost of attendance</th><th class="num">Free money</th><th class="num">Net cost /yr</th><th></th></tr></thead>
+      <tbody id="collegeTbody"></tbody>
+    </table></div>
+  </section>
+
+  <!-- ============ COMPARISON ============ -->
+  <section class="view" id="view-compare">
+    <div class="card" style="margin:18px 0">
+      <h3>Side-by-side comparison</h3>
+      <p class="hint" style="margin-bottom:12px">Click a column header to sort. The gold badge marks the best value in each column.</p>
+      <div class="table-wrap"><table id="compareTable">
+        <thead><tr>
+          <th data-sort="name">College</th>
+          <th class="num" data-sort="coa">Cost of attendance</th>
+          <th class="num" data-sort="grants">Grants</th>
+          <th class="num" data-sort="net">Net cost /yr</th>
+          <th class="num" data-sort="loans">Loans /yr</th>
+          <th class="num" data-sort="four">4-yr net cost</th>
+          <th class="num" data-sort="pmt">Est. monthly payment</th>
+        </tr></thead>
+        <tbody id="compareTbody"></tbody>
+      </table></div>
+      <div class="btnrow">
+        <button class="btn soft" id="printCompareBtn">Print comparison sheet</button>
+        <button class="btn ghost" id="exportCompareCsvBtn">Export CSV</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 4-YEAR COST ============ -->
+  <section class="view" id="view-fouryear">
+    <div class="card" style="margin:18px 0">
+      <h3>4-year cost projection</h3>
+      <p class="hint" style="margin-bottom:12px" id="fourAssump"></p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>College</th><th class="num">4-yr net cost</th><th class="num">Total borrowed</th><th class="num">Est. total interest</th><th class="num">Est. monthly payment</th><th class="num">Lifetime loan cost</th></tr></thead>
+        <tbody id="fourTbody"></tbody>
+      </table></div>
+    </div>
+    <div class="card">
+      <h3>Total borrowed vs interest</h3>
+      <div id="chartBorrow"></div>
+      <div class="chart-legend"><span><i style="background:var(--primary)"></i>Borrowed</span><span><i style="background:var(--danger)"></i>Interest</span></div>
+    </div>
+  </section>
+
+  <!-- ============ SCORECARD ============ -->
+  <section class="view" id="view-scorecard">
+    <div class="card" style="margin:18px 0">
+      <h3>Decision scorecard</h3>
+      <p class="hint" style="margin-bottom:12px">Cost isn't everything. Set how much each factor matters, add graduation rates and your personal fit — the scorecard ranks your options.</p>
+      <div class="row4">
+        <div class="field"><label for="wCost">Net cost weight</label><input class="input" id="wCost" type="number" min="0" max="100" step="5"></div>
+        <div class="field"><label for="wLoans">Loan burden weight</label><input class="input" id="wLoans" type="number" min="0" max="100" step="5"></div>
+        <div class="field"><label for="wGrad">Graduation rate weight</label><input class="input" id="wGrad" type="number" min="0" max="100" step="5"></div>
+        <div class="field"><label for="wFit">Personal fit weight</label><input class="input" id="wFit" type="number" min="0" max="100" step="5"></div>
+      </div>
+      <div id="scoreResults" style="margin-top:6px"></div>
+    </div>
+    <div class="card">
+      <h3>Your notes per college</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>College</th><th class="num">Grad. rate %</th><th class="num">Fit (1–5)</th><th>Notes</th></tr></thead>
+        <tbody id="scoreTbody"></tbody>
+      </table></div>
+      <p class="hint" style="margin-top:10px">Graduation rate and fit are your judgment calls — from the college's published data and your visits. Notes are free text.</p>
+    </div>
+  </section>
+
+  <!-- ============ SETTINGS ============ -->
+  <section class="view" id="view-settings">
+    <div class="card" style="margin:18px 0">
+      <h3>Appearance</h3>
+      <div class="row2">
+        <div class="field"><label for="themeSel">Theme</label>
+          <select class="input" id="themeSel">
+            <option value="light">Ivy — parchment &amp; navy</option>
+            <option value="soft">Crimson — blush &amp; burgundy</option>
+            <option value="professional">Oxford — slate &amp; navy</option>
+            <option value="minimal">Regent — monochrome ink</option>
+            <option value="dark">Nocturne — deep navy</option>
+          </select></div>
+        <div class="field"><label for="fontSel">Interface font</label>
+          <select class="input" id="fontSel">
+            <option value="system">System</option>
+            <option value="humanist">Humanist</option>
+            <option value="classic">Classic serif</option>
+            <option value="rounded">Rounded</option>
+          </select></div>
+      </div>
+      <div class="field" style="max-width:280px"><label for="loanApr">Assumed loan APR % (for payment estimates)</label><input class="input" id="loanApr" inputmode="decimal"></div>
+      <p class="hint">Payment estimates use the standard 10-year repayment plan at this rate. Change it to match your actual loan offers.</p>
+    </div>
+    <div class="card">
+      <h3>Backup &amp; data</h3>
+      <p class="hint" style="margin-bottom:12px">Your colleges live only in this browser. Download a backup file regularly — clearing browser data erases them.</p>
+      <div class="btnrow">
+        <button class="btn" id="backupBtn">Download backup</button>
+        <button class="btn ghost" id="restoreBtn">Restore backup</button>
+        <input type="file" id="restoreFile" accept=".json,application/json" hidden>
+        <button class="btn soft" id="exportAllCsvBtn">Export all CSV</button>
+        <button class="btn danger" id="resetAllBtn">Reset everything</button>
+      </div>
+    </div>
+    <div class="card" style="margin-top:18px">
+      <h3>About this tool</h3>
+      <p class="hint">College Aid Offer Comparison by LedgerLoopStudio. Compares financial-aid offers to reveal each college's true yearly cost and 4-year outlook. Estimates use simplified math and the assumptions shown — always confirm with the college's aid office. Educational purposes only; not financial advice.</p>
+    </div>
+  </section>
+
+  <div id="toast" class="no-print" style="position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);opacity:0;padding:12px 22px;border-radius:99px;font-weight:600;font-size:14px;z-index:99;transition:opacity .25s ease,transform .25s ease;pointer-events:none"></div>
+  <footer style="text-align:center;margin-top:44px;color:var(--faint)"><span style="font-family:var(--font-display);letter-spacing:.4px">LedgerLoopStudio</span> · Simple systems for money, work, and time.</footer>
+</div>
+<script>
+"use strict";
+/* ================================================================
+   COLLEGE AID OFFER COMPARISON — pure logic (DOM-independent)
+   ================================================================ */
+function parseNum(v){
+  if(typeof v === 'number') return isFinite(v) ? v : 0;
+  if(v == null) return 0;
+  const n = parseFloat(String(v).replace(/[^0-9.\-]/g,''));
+  return isFinite(n) ? n : 0;
+}
+function money(n){
+  const neg = n < 0, v = Math.abs(n);
+  const s = v.toLocaleString('en-US',{minimumFractionDigits:2, maximumFractionDigits:2});
+  return (neg?'-':'') + '$' + s;
+}
+function money0(n){
+  const neg = n < 0, v = Math.abs(n);
+  return (neg?'-':'') + '$' + Math.round(v).toLocaleString('en-US');
+}
+function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+/* ---------- true-cost engine (all figures are per-year unless noted) ---------- */
+function coa(c){ return parseNum(c.tuition)+parseNum(c.housing)+parseNum(c.books)+parseNum(c.other); }
+function freeMoney(c){ return parseNum(c.grants); }
+function loansYr(c){ return parseNum(c.fed)+parseNum(c.oth); }
+/* headline: what the family actually pays year one */
+function netCost(c){ return coa(c) - freeMoney(c); }
+/* remaining gap after work-study + loans (negative = over-awarded) */
+function gap(c){ return netCost(c) - parseNum(c.work) - loansYr(c); }
+function fourYearNet(c){ return 4 * netCost(c); }
+function totalBorrowed(c){ return 4 * loansYr(c); }
+
+/* standard amortizing payment; years default 10 */
+function monthlyPayment(principal, aprPct, years){
+  const P = parseNum(principal), n = (years||10)*12, i = parseNum(aprPct)/1200;
+  if(P <= 0) return 0;
+  if(i <= 0) return P/n;
+  return P*i/(1-Math.pow(1+i,-n));
+}
+function loanStats(c, aprPct){
+  const borrowed = totalBorrowed(c);
+  const pmt = monthlyPayment(borrowed, aprPct, 10);
+  const lifetime = pmt*120;
+  return {borrowed, pmt, lifetime, interest: lifetime - borrowed};
+}
+
+/* ---------- decision scorecard ---------- */
+function scoreColleges(list, aprPct, w){
+  /* w = {cost, loans, grad, fit} weights; higher score = better */
+  const nets = list.map(netCost), borrows = list.map(c=>totalBorrowed(c));
+  const minN = Math.min.apply(null,nets), maxN = Math.max.apply(null,nets);
+  const minB = Math.min.apply(null,borrows), maxB = Math.max.apply(null,borrows);
+  const wSum = Math.max(1, w.cost+w.loans+w.grad+w.fit);
+  return list.map((c,idx)=>{
+    const costS = (maxN>minN) ? 100*(maxN-nets[idx])/(maxN-minN) : 100;
+    const loanS = (maxB>minB) ? 100*(maxB-borrows[idx])/(maxB-minB) : 100;
+    const gr = parseNum(c.gradRate);
+    const gradS = gr>0 ? Math.min(100,gr) : 50; /* unknown -> neutral */
+    const ft = parseNum(c.fit);
+    const fitS = ft>0 ? Math.min(100, ft*20) : 50;
+    const total = (w.cost*costS + w.loans*loanS + w.grad*gradS + w.fit*fitS)/wSum;
+    return {college:c, costS, loanS, gradS, fitS, total};
+  }).sort((a,b)=>b.total-a.total);
+}
+
+/* ---------- sample data: 3 realistic offers ---------- */
+function sampleColleges(){
+  return [
+    {name:'Brookfield State University', tuition:12400, housing:11200, books:1200, other:2800,
+     grants:8500, work:2000, fed:5500, oth:0, gradRate:62, fit:4,
+     notes:'Strong engineering program, 40 min from home.'},
+    {name:'Ashford Private College', tuition:42000, housing:13500, books:1000, other:2500,
+     grants:28000, work:2500, fed:5500, oth:8000, gradRate:78, fit:5,
+     notes:'Dream school but heavy loans. Generous grant.'},
+    {name:'Lakeside Community College', tuition:4800, housing:0, books:1400, other:3200,
+     grants:4200, work:0, fed:3500, oth:0, gradRate:34, fit:3,
+     notes:'2-year transfer path to Brookfield — cheapest route.'}
+  ];
+}
+
+/* ---------- CSV / download helpers ---------- */
+function csvCell(v){
+  const s = String(v == null ? '' : v);
+  return /[",\n]/.test(s) ? '"'+s.replace(/"/g,'""')+'"' : s;
+}
+function downloadFile(name, content, mime){
+  const blob = new Blob([content], {type: mime || 'text/plain'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = name;
+  document.body.appendChild(a); a.click();
+  setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); }, 400);
+}
+</script>
+<script>
+"use strict";
+/* ============ STATE ============ */
+const LS_KEY = 'lls-aid-compare-v1';
+function defaultState(){ return {colleges:[], theme:'light', font:'system', loanApr:6.5,
+  wCost:40, wLoans:25, wGrad:20, wFit:15, backupAt:null, uid:1}; }
+let S = defaultState();
+try{
+  const raw = localStorage.getItem(LS_KEY);
+  if(raw){ const p = JSON.parse(raw); if(p && typeof p==='object') S = Object.assign(defaultState(), p); }
+}catch(e){}
+
+function save(silent){
+  try{ localStorage.setItem(LS_KEY, JSON.stringify(S)); }catch(e){}
+  if(!silent) updateBackupDot();
+}
+function uid(){ return 'id'+(S.uid++)+'_'+Date.now().toString(36); }
+function toast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.style.opacity='1'; t.style.transform='translateX(-50%) translateY(0)';
+  clearTimeout(t._h); t._h = setTimeout(()=>{ t.style.opacity='0'; t.style.transform='translateX(-50%) translateY(20px)'; }, 2400);
+}
+function activeColleges(){ return S.colleges.filter(c => c && c.name); }
+function apr(){ return Math.max(0, parseNum(S.loanApr)); }
+
+function updateBackupDot(){
+  const dot = document.getElementById('backupDot'), txt = document.getElementById('backupDotTxt');
+  if(!S.backupAt){ dot.classList.add('stale'); txt.textContent = 'Back up your data'; return; }
+  const days = Math.floor((Date.now()-S.backupAt)/864e5);
+  if(days >= 30){ dot.classList.add('stale'); txt.textContent = 'Backup is '+days+' days old'; }
+  else { dot.classList.remove('stale'); txt.textContent = 'Saved · backed up '+(days===0?'today':days+'d ago'); }
+}
+
+/* ============ NAV ============ */
+function switchView(name){
+  document.querySelectorAll('#mainNav button').forEach(b=>b.classList.toggle('active', b.dataset.view===name));
+  document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active', v.id==='view-'+name));
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+if(typeof document !== 'undefined'){
+  document.getElementById('mainNav').addEventListener('click', e=>{
+    const b = e.target.closest('button[data-view]');
+    if(b) switchView(b.dataset.view);
+  });
+}
+
+/* ============ SVG CHARTS ============ */
+function hbarChart(rows){
+  /* rows: [{label, total, part, partColor}] — horizontal stacked bars */
+  const W=560, rowH=44, P={l:150,r:70,t:10};
+  const H = P.t + rows.length*rowH + 8;
+  const maxV = Math.max.apply(null, rows.map(r=>r.total).concat([1]));
+  const X = v => P.l + (v/maxV)*(W-P.l-P.r);
+  let y = P.t;
+  const out = rows.map(r=>{
+    const wT = Math.max(2, X(r.total)-P.l), wP = Math.max(0, X(r.part)-P.l);
+    const s = `<g>
+      <text x="${P.l-10}" y="${y+20}" text-anchor="end" font-size="12.5" font-family="Georgia,serif" fill="currentColor" opacity="0.75">${esc(r.label)}</text>
+      <rect x="${P.l}" y="${y+6}" width="${wT.toFixed(1)}" height="16" rx="8" fill="var(--primary)" opacity="0.85"/>
+      ${wP>1?`<rect x="${P.l}" y="${y+6}" width="${wP.toFixed(1)}" height="16" rx="8" fill="${r.partColor||'var(--gold)'}" opacity="0.95"/>`:''}
+      <text x="${X(r.total)+8}" y="${y+20}" font-size="12" font-family="Georgia,serif" fill="currentColor" opacity="0.7">${r.totalLabel}</text>
+    </g>`;
+    y += rowH;
+    return s;
+  }).join('');
+  return `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Bar chart">${out}</svg>`;
+}
+
+/* ============ DASHBOARD ============ */
+function renderDashboard(){
+  const list = activeColleges();
+  const hero = id => document.getElementById(id);
+  if(list.length===0){
+    hero('heroKicker').textContent = 'True-cost comparison';
+    hero('heroTitle').textContent = 'Find your cheapest college';
+    hero('heroSub').textContent = 'Add each college\u2019s aid offer under \u201cColleges\u201d — true net costs, 4-year projections and the best-value pick appear here.';
+    hero('heroProgress').style.width = '0%';
+    hero('statCards').innerHTML = '';
+    hero('rankBars').innerHTML = '<div class="empty"><div class="big">◆</div><b>No colleges yet</b>Add your first aid offer to start comparing.</div>';
+    hero('chart4yr').innerHTML = '<div class="empty"><div class="big">◆</div><b>No data yet</b>Your 4-year projection chart will appear here.</div>';
+    hero('bestNote').innerHTML = '';
+    return;
+  }
+  const ranked = list.slice().sort((a,b)=>netCost(a)-netCost(b));
+  const best = ranked[0], worst = ranked[ranked.length-1];
+  hero('heroKicker').textContent = 'Best value · ' + ranked.length + ' offer' + (ranked.length===1?'':'s') + ' compared';
+  hero('heroTitle').textContent = 'Cheapest true cost: ' + best.name;
+  hero('heroSub').textContent = money0(netCost(best)) + ' per year · ' + money0(fourYearNet(best)) + ' over 4 years — after grants and scholarships.';
+  hero('heroProgress').style.width = Math.min(100, list.length/8*100) + '%';
+
+  const totGrants = list.reduce((a,c)=>a+freeMoney(c),0);
+  const totLoans = list.reduce((a,c)=>a+loansYr(c),0);
+  hero('statCards').innerHTML = `
+    <div class="card"><h3>Colleges compared</h3><div class="stat-num">${list.length}</div><div class="stat-sub">up to 8 offers</div></div>
+    <div class="card"><h3>Lowest net cost /yr</h3><div class="stat-num stat-accent">${money0(netCost(best))}</div><div class="stat-sub">${esc(best.name)}</div></div>
+    <div class="card"><h3>Highest net cost /yr</h3><div class="stat-num">${money0(netCost(worst))}</div><div class="stat-sub">${esc(worst.name)}</div></div>
+    <div class="card"><h3>Free money /yr</h3><div class="stat-num">${money0(totGrants)}</div><div class="stat-sub">grants + scholarships · loans ${money0(totLoans)}/yr</div></div>`;
+
+  const maxN = Math.max.apply(null, ranked.map(netCost).concat([1]));
+  hero('rankBars').innerHTML = ranked.map((c,i)=>{
+    const n = netCost(c), w = Math.max(3, n/maxN*100);
+    return `<div class="debtbar"><div><div class="nm">${i===0?'<span class="pill gold" style="margin-right:8px">Best value</span>':''}${esc(c.name)}</div>
+      <div class="meta">COA ${money0(coa(c))} · grants ${money0(freeMoney(c))} · loans ${money0(loansYr(c))}/yr</div></div>
+      <div class="amt">${money0(n)}</div>
+      <div class="bar"><i style="width:${w.toFixed(1)}%"></i></div></div>`;
+  }).join('');
+
+  hero('chart4yr').innerHTML = hbarChart(ranked.map(c=>({
+    label: c.name.length>22 ? c.name.slice(0,21)+'…' : c.name,
+    total: fourYearNet(c), part: totalBorrowed(c),
+    totalLabel: money0(fourYearNet(c))
+  })));
+
+  const lowLoan = list.slice().sort((a,b)=>loansYr(a)-loansYr(b))[0];
+  const ls = loanStats(best, apr());
+  hero('bestNote').innerHTML = `<div class="notice ok"><strong>${esc(best.name)} is your best value</strong>
+    Lowest true cost at ${money0(netCost(best))}/yr. ${esc(lowLoan.name)} keeps borrowing lowest (${money0(loansYr(lowLoan))}/yr in loans).
+    Estimated loan payment after graduation for ${esc(best.name)}: <b>${money(ls.pmt)}/mo</b> for 10 years at ${apr()}% APR.</div>`;
+}
+</script>
+<script>
+"use strict";
+/* ============ COLLEGES TAB ============ */
+let editingId = null;
+function readCollegeForm(){
+  const v = id => document.getElementById(id).value;
+  return {
+    name: v('cName').trim(),
+    tuition: parseNum(v('cTuition')), housing: parseNum(v('cHousing')),
+    books: parseNum(v('cBooks')), other: parseNum(v('cOther')),
+    grants: parseNum(v('cGrants')), work: parseNum(v('cWork')),
+    fed: parseNum(v('cFed')), oth: parseNum(v('cOth'))
+  };
+}
+function clearCollegeForm(){
+  ['cName','cTuition','cHousing','cBooks','cOther','cGrants','cWork','cFed','cOth'].forEach(id=>{document.getElementById(id).value='';});
+  editingId = null;
+  document.getElementById('addCollegeBtn').textContent = 'Add college';
+  document.getElementById('collegeFormTitle').textContent = 'Add a college offer';
+}
+function renderColleges(){
+  const tb = document.getElementById('collegeTbody');
+  if(!S.colleges.length){
+    tb.innerHTML = '<tr><td colspan="5"><div class="empty"><div class="big">◆</div><b>No colleges yet</b>Add your first aid offer above — or load the sample data.</div></td></tr>';
+    return;
+  }
+  tb.innerHTML = S.colleges.map(c=>`
+    <tr><td><b>${esc(c.name)}</b><div class="hint">${money0(coa(c))} COA · ${money0(loansYr(c))} loans/yr</div></td>
+    <td class="num">${money0(coa(c))}</td>
+    <td class="num">${money0(freeMoney(c))}</td>
+    <td class="num"><b>${money0(netCost(c))}</b></td>
+    <td style="white-space:nowrap;text-align:right">
+      <button class="icon-btn" data-edit="${c.id}" title="Edit" aria-label="Edit ${esc(c.name)}">✎</button>
+      <button class="icon-btn" data-del="${c.id}" title="Remove" aria-label="Remove ${esc(c.name)}">×</button>
+    </td></tr>`).join('');
+}
+
+/* ============ COMPARISON TAB ============ */
+let sortKey = 'net', sortDir = 1;
+function compareRows(){
+  const list = activeColleges().map(c=>{
+    const ls = loanStats(c, apr());
+    return {c, name:c.name, coa:coa(c), grants:freeMoney(c), net:netCost(c),
+      loans:loansYr(c), four:fourYearNet(c), pmt:ls.pmt, borrowed:ls.borrowed};
+  });
+  const k = sortKey, d = sortDir;
+  list.sort((a,b)=>{
+    const va = a[k], vb = b[k];
+    const r = (typeof va==='string') ? va.localeCompare(vb) : va-vb;
+    return r*d;
+  });
+  return list;
+}
+function bestIn(rows, k, lower){
+  let bv = null;
+  rows.forEach(r=>{ if(bv===null || (lower ? r[k]<bv : r[k]>bv)) bv = r[k]; });
+  return bv;
+}
+function renderCompare(){
+  const tb = document.getElementById('compareTbody');
+  const rows = compareRows();
+  if(!rows.length){
+    tb.innerHTML = '<tr><td colspan="7"><div class="empty"><div class="big">◆</div><b>Nothing to compare</b>Add colleges first.</div></td></tr>';
+    return;
+  }
+  const bNet = bestIn(rows,'net',true), bLoans = bestIn(rows,'loans',true),
+        bFour = bestIn(rows,'four',true), bPmt = bestIn(rows,'pmt',true),
+        bGrants = bestIn(rows,'grants',false);
+  const badge = v => v ? ' <span class="pill gold">Best</span>' : '';
+  tb.innerHTML = rows.map(r=>`
+    <tr><td><b>${esc(r.name)}</b></td>
+    <td class="num">${money0(r.coa)}</td>
+    <td class="num">${money0(r.grants)}${badge(r.grants===bGrants)}</td>
+    <td class="num"><b>${money0(r.net)}</b>${badge(r.net===bNet)}</td>
+    <td class="num">${money0(r.loans)}${badge(r.loans===bLoans)}</td>
+    <td class="num">${money0(r.four)}${badge(r.four===bFour)}</td>
+    <td class="num">${money(r.pmt)}${badge(r.pmt===bPmt)}</td></tr>`).join('');
+  document.querySelectorAll('#compareTable th[data-sort]').forEach(th=>{
+    const k = th.dataset.sort;
+    th.style.cursor = 'pointer';
+    th.innerHTML = th.textContent.replace(/ [▲▼]$/,'') + (k===sortKey ? (sortDir===1?' ▲':' ▼') : '');
+  });
+}
+
+/* ============ 4-YEAR TAB ============ */
+function renderFour(){
+  const list = activeColleges();
+  document.getElementById('fourAssump').textContent =
+    'Assumes costs and aid stay flat for 4 years. Loan estimates use the standard 10-year repayment plan at ' + apr() + '% APR (change it in Settings). Simplified estimates — confirm with each aid office.';
+  const tb = document.getElementById('fourTbody');
+  if(!list.length){
+    tb.innerHTML = '<tr><td colspan="6"><div class="empty"><div class="big">◆</div><b>No colleges yet</b></div></td></tr>';
+    document.getElementById('chartBorrow').innerHTML = '';
+    return;
+  }
+  const rows = list.map(c=>({c, ls:loanStats(c, apr())}));
+  tb.innerHTML = rows.map(r=>`
+    <tr><td><b>${esc(r.c.name)}</b></td>
+    <td class="num"><b>${money0(fourYearNet(r.c))}</b></td>
+    <td class="num">${money0(r.ls.borrowed)}</td>
+    <td class="num">${money0(r.ls.interest)}</td>
+    <td class="num">${money(r.ls.pmt)}</td>
+    <td class="num">${money0(r.ls.lifetime)}</td></tr>`).join('');
+  const ranked = rows.slice().sort((a,b)=>b.ls.borrowed-a.ls.borrowed);
+  document.getElementById('chartBorrow').innerHTML = hbarChart(ranked.map(r=>({
+    label: r.c.name.length>22 ? r.c.name.slice(0,21)+'…' : r.c.name,
+    total: r.ls.borrowed + r.ls.interest, part: r.ls.interest, partColor: 'var(--danger)',
+    totalLabel: money0(r.ls.borrowed + r.ls.interest)
+  })));
+}
+
+/* ============ SCORECARD TAB ============ */
+function renderScorecard(){
+  const list = activeColleges();
+  ['wCost','wLoans','wGrad','wFit'].forEach(id=>{
+    const el = document.getElementById(id);
+    if(document.activeElement !== el) el.value = S[id];
+  });
+  const tb = document.getElementById('scoreTbody');
+  if(!list.length){
+    tb.innerHTML = '<tr><td colspan="4"><div class="empty"><div class="big">◆</div><b>No colleges yet</b></div></td></tr>';
+    document.getElementById('scoreResults').innerHTML = '';
+    return;
+  }
+  tb.innerHTML = list.map(c=>`
+    <tr><td><b>${esc(c.name)}</b></td>
+    <td><input class="input" style="max-width:110px;margin-left:auto" data-grad="${c.id}" inputmode="decimal" placeholder="%" value="${c.gradRate||''}"></td>
+    <td><input class="input" style="max-width:90px;margin-left:auto" data-fit="${c.id}" inputmode="numeric" placeholder="1–5" value="${c.fit||''}"></td>
+    <td><input class="input" data-notes="${c.id}" placeholder="Your notes…" maxlength="200" value="${esc(c.notes||'')}"></td></tr>`).join('');
+  const w = {cost:parseNum(S.wCost), loans:parseNum(S.wLoans), grad:parseNum(S.wGrad), fit:parseNum(S.wFit)};
+  const scored = scoreColleges(list, apr(), w);
+  document.getElementById('scoreResults').innerHTML = scored.map((s,i)=>`
+    <div class="debtbar"><div><div class="nm">${i===0?'<span class="pill gold" style="margin-right:8px">Top pick</span>':''}${esc(s.college.name)}</div>
+      <div class="meta">cost ${s.costS.toFixed(0)} · loans ${s.loanS.toFixed(0)} · grad ${s.gradS.toFixed(0)} · fit ${s.fitS.toFixed(0)}</div></div>
+      <div class="amt">${s.total.toFixed(1)}</div>
+      <div class="bar"><i style="width:${s.total.toFixed(1)}%"></i></div></div>`).join('');
+}
+</script>
+<script>
+"use strict";
+/* ============ EVENTS ============ */
+function bindEvents(){
+  const $ = id => document.getElementById(id);
+
+  /* colleges */
+  $('addCollegeBtn').addEventListener('click', ()=>{
+    const f = readCollegeForm();
+    if(!f.name){ toast('Give the college a name'); $('cName').focus(); return; }
+    if(S.colleges.length >= 8 && !editingId){ toast('Maximum 8 colleges'); return; }
+    if(editingId){
+      const c = S.colleges.find(x=>x.id===editingId);
+      if(c) Object.assign(c, f);
+      toast('College updated');
+    } else {
+      S.colleges.push(Object.assign({id:uid(), gradRate:'', fit:'', notes:''}, f));
+      toast('College added');
+    }
+    save(); clearCollegeForm(); renderAll();
+  });
+  $('cName').addEventListener('keydown', e=>{ if(e.key==='Enter') $('addCollegeBtn').click(); });
+  $('collegeTbody').addEventListener('click', e=>{
+    const del = e.target.closest('[data-del]');
+    const ed = e.target.closest('[data-edit]');
+    if(del){
+      S.colleges = S.colleges.filter(c=>c.id!==del.dataset.del);
+      save(); renderAll(); toast('College removed');
+    } else if(ed){
+      const c = S.colleges.find(x=>x.id===ed.dataset.edit);
+      if(!c) return;
+      editingId = c.id;
+      $('cName').value=c.name; $('cTuition').value=c.tuition||''; $('cHousing').value=c.housing||'';
+      $('cBooks').value=c.books||''; $('cOther').value=c.other||'';
+      $('cGrants').value=c.grants||''; $('cWork').value=c.work||'';
+      $('cFed').value=c.fed||''; $('cOth').value=c.oth||'';
+      $('addCollegeBtn').textContent='Update college';
+      $('collegeFormTitle').textContent='Edit college offer';
+      switchView('colleges'); $('cName').focus();
+    }
+  });
+  $('loadSampleBtn').addEventListener('click', ()=>{
+    if(S.colleges.length && !confirm('Replace current colleges with sample data?')) return;
+    S.colleges = sampleColleges().map(c=>Object.assign({id:uid()}, c));
+    save(); renderAll(); toast('Sample data loaded');
+  });
+  $('clearCollegesBtn').addEventListener('click', ()=>{
+    if(!S.colleges.length) return;
+    if(!confirm('Remove ALL colleges?')) return;
+    S.colleges = []; save(); renderAll(); toast('Colleges cleared');
+  });
+
+  /* comparison */
+  document.querySelectorAll('#compareTable th[data-sort]').forEach(th=>{
+    th.addEventListener('click', ()=>{
+      const k = th.dataset.sort;
+      if(sortKey===k) sortDir = -sortDir; else { sortKey=k; sortDir=1; }
+      renderCompare();
+    });
+  });
+  $('printCompareBtn').addEventListener('click', ()=>window.print());
+  $('exportCompareCsvBtn').addEventListener('click', ()=>{
+    const rows = compareRows();
+    if(!rows.length){ toast('Add colleges first'); return; }
+    let csv = 'College Aid Offer Comparison — LedgerLoopStudio\nGenerated,'+new Date().toISOString().slice(0,10)+'\n\n';
+    csv += 'College,Cost of attendance,Grants,Net cost per year,Loans per year,4-year net cost,Est. monthly payment\n';
+    rows.forEach(r=>{ csv += [csvCell(r.name), r.coa.toFixed(2), r.grants.toFixed(2), r.net.toFixed(2),
+      r.loans.toFixed(2), r.four.toFixed(2), r.pmt.toFixed(2)].join(',')+'\n'; });
+    downloadFile('aid-offer-comparison.csv', csv, 'text/csv');
+    toast('Comparison exported');
+  });
+
+  /* scorecard */
+  [['wCost','wCost'],['wLoans','wLoans'],['wGrad','wGrad'],['wFit','wFit']].forEach(([id,key])=>{
+    $(id).addEventListener('change', e=>{
+      S[key] = Math.max(0, parseNum(e.target.value)); save(true); renderScorecard();
+    });
+  });
+  $('scoreTbody').addEventListener('change', e=>{
+    const g = e.target.closest('[data-grad]'), f = e.target.closest('[data-fit]'), n = e.target.closest('[data-notes]');
+    if(g){ const c=S.colleges.find(x=>x.id===g.dataset.grad); if(c){ c.gradRate=Math.min(100,Math.max(0,parseNum(g.value))); save(true); renderScorecard(); } }
+    else if(f){ const c=S.colleges.find(x=>x.id===f.dataset.fit); if(c){ c.fit=Math.min(5,Math.max(0,parseNum(f.value))); save(true); renderScorecard(); } }
+    else if(n){ const c=S.colleges.find(x=>x.id===n.dataset.notes); if(c){ c.notes=n.value; save(true); } }
+  });
+
+  /* settings */
+  $('themeSel').addEventListener('change', e=>{ S.theme=e.target.value; save(true); applyPrefs(); });
+  $('themeToggle').addEventListener('click', ()=>{
+    S.theme = (S.theme==='dark') ? 'light' : 'dark';
+    save(true); applyPrefs();
+    document.getElementById('themeSel').value = S.theme;
+    toast(S.theme==='dark' ? 'Dark mode on' : 'Light mode on');
+  });
+  $('fontSel').addEventListener('change', e=>{ S.font=e.target.value; save(true); applyPrefs(); });
+  $('loanApr').addEventListener('change', e=>{
+    S.loanApr = Math.max(0, parseNum(e.target.value)); save(); renderAll(); toast('Estimates updated');
+  });
+
+  /* backup / restore */
+  $('backupBtn').addEventListener('click', ()=>{
+    const payload = {app:'LedgerLoopStudio College Aid Offer Comparison', version:1, exported:new Date().toISOString(), state:S};
+    downloadFile('aid-comparison-backup-'+new Date().toISOString().slice(0,10)+'.json', JSON.stringify(payload,null,2), 'application/json');
+    S.backupAt = Date.now(); save(); toast('Backup downloaded — keep it safe');
+  });
+  $('restoreBtn').addEventListener('click', ()=>$('restoreFile').click());
+  $('restoreFile').addEventListener('change', e=>{
+    const f = e.target.files[0]; if(!f) return;
+    const r = new FileReader();
+    r.onload = ()=>{
+      try{
+        const p = JSON.parse(r.result);
+        const st = p.state || p;
+        if(!st || !Array.isArray(st.colleges)) throw new Error('bad');
+        if(!confirm('Restore will REPLACE all current data. Continue?')) return;
+        S = Object.assign(defaultState(), st);
+        S.backupAt = Date.now(); save(); renderAll(); toast('Backup restored');
+      }catch(err){ toast('That file is not a valid backup'); }
+      e.target.value='';
+    };
+    r.readAsText(f);
+  });
+  $('exportAllCsvBtn').addEventListener('click', ()=>{
+    if(!S.colleges.length){ toast('Nothing to export yet'); return; }
+    let csv = 'College,Tuition,Housing,Books,Other,Grants,Work-study,Federal loans,Other loans,Net cost per year,4-year net cost\n';
+    S.colleges.forEach(c=>{ csv += [csvCell(c.name), c.tuition, c.housing, c.books, c.other, c.grants,
+      c.work, c.fed, c.oth, netCost(c).toFixed(2), fourYearNet(c).toFixed(2)].join(',')+'\n'; });
+    downloadFile('aid-offers-all.csv', csv, 'text/csv');
+    toast('Exported');
+  });
+  $('resetAllBtn').addEventListener('click', ()=>{
+    if(!confirm('Reset EVERYTHING (colleges, settings)? This cannot be undone.')) return;
+    S = defaultState(); save(); renderAll(); toast('All data reset');
+  });
+}
+
+/* ============ PREFS / RENDER ALL ============ */
+function applyPrefs(){
+  document.documentElement.dataset.theme = S.theme;
+  document.documentElement.dataset.font = S.font;
+  syncThemeToggle();
+}
+function syncThemeToggle(){
+  const btn = document.getElementById('themeToggle'), ic = document.getElementById('themeToggleIcon');
+  if(!btn || !ic) return;
+  const dark = S.theme === 'dark';
+  ic.textContent = dark ? '☀' : '☾';
+  btn.title = dark ? 'Switch to light mode' : 'Switch to dark mode';
+  btn.setAttribute('aria-label', btn.title);
+  btn.setAttribute('aria-pressed', String(dark));
+}
+function renderSettings(){
+  const set = (id,v)=>{ const el=document.getElementById(id); if(document.activeElement!==el) el.value=v; };
+  set('themeSel', S.theme); set('fontSel', S.font); set('loanApr', S.loanApr);
+}
+function renderAll(){
+  applyPrefs();
+  renderDashboard(); renderColleges(); renderCompare(); renderFour(); renderScorecard(); renderSettings();
+  updateBackupDot();
+}
+
+/* ============ INIT ============ */
+function init(){
+  bindEvents();
+  renderAll();
+  if(S.colleges.length && !S.backupAt){
+    setTimeout(()=>toast('Tip: download a backup file in Settings — it protects your data'), 1500);
+  }
+}
+if(typeof document !== 'undefined'){
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+}
+</script>
+
+<!-- ===== LEDGERLOOPSTUDIO DEMO ENTRY LIMIT (10) ===== -->
+<script>
+(function(){
+  var DEMO_LIMIT = 10;
+  var DEMO_MSG = "Demo limit reached (10 entries). Get the full version on Etsy for unlimited entries!";
+  var addCount = 0;
+  function isAddButton(el){
+    if (!el || !el.textContent) return false;
+    var t = el.textContent.trim().toLowerCase();
+    if (t.indexOf('theme') > -1 || t.indexOf('font') > -1 || t.indexOf('mode') > -1) return false;
+    var addWords = ['add', 'save', 'create'];
+    for (var i = 0; i < addWords.length; i++){
+      if (t === addWords[i] || t.indexOf(addWords[i]+' ') === 0) return true;
+    }
+    if (t === '+') return true;
+    return false;
+  }
+  function showMsg(){
+    try { if (typeof toast === 'function') toast(DEMO_MSG); else alert(DEMO_MSG); }
+    catch(e){ alert(DEMO_MSG); }
+  }
+  function updateCounter(){
+    var c = document.getElementById('demo-entry-counter');
+    if (c) c.textContent = addCount + '/' + DEMO_LIMIT + ' entries used';
+  }
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest ? e.target.closest('button,input[type="submit"],input[type="button"]') : null;
+    if (!btn || !isAddButton(btn)) return;
+    if (addCount >= DEMO_LIMIT) {
+      e.preventDefault(); e.stopPropagation(); e.stopImmediatePropagation();
+      showMsg(); return false;
+    }
+    addCount++; updateCounter();
+  }, true);
+  document.addEventListener('submit', function(e){
+    if (addCount >= DEMO_LIMIT) {
+      e.preventDefault(); e.stopPropagation(); showMsg(); return false;
+    }
+    addCount++; updateCounter();
+  }, true);
+})();
+</script>
+<!-- ===== /DEMO LIMIT ===== -->
+
+</body>
+</html>
